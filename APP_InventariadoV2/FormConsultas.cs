@@ -15,6 +15,7 @@ namespace APP_InventariadoV2
     public partial class FormConsultas : Form
     {
         SqlConnection conn = new SqlConnection("server=DESKTOP-DENLCDT; database=BaseProductos; integrated security=true");
+
         public FormConsultas()
         {
             InitializeComponent();
@@ -27,15 +28,33 @@ namespace APP_InventariadoV2
 
         private void RegreCons_Click(object sender, EventArgs e)
         {
-            Form formulario2 = new HomeForm();
-            formulario2.Show();
+            this.Hide();  // Solo ocultamos el formulario actual
+            HomeForm homeForm = (HomeForm)Application.OpenForms["HomeForm"]; // Buscamos la instancia abierta de HomeForm
+
+            if (homeForm != null)
+            {
+                homeForm.Show(); // Mostramos la instancia existente
+            }
+            else
+            {
+                HomeForm newHomeForm = new HomeForm(); // Si no está abierta, creamos una nueva
+                newHomeForm.Show();
+            }
         }
+
         private void CargarData()
         {
-            SqlDataAdapter da = new SqlDataAdapter("select*from Productos", conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            this.dataGridView1.DataSource = dt;
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter("select * from Productos", conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                this.dataGridView1.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos: " + ex.Message);
+            }
         }
     }
 }

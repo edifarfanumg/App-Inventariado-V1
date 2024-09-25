@@ -24,3 +24,4 @@ C:\Users\Usuario\source\repos\APP_InventariadoV2\APP_InventariadoV2\obj\Debug\ne
 C:\Users\Usuario\source\repos\APP_InventariadoV2\APP_InventariadoV2\obj\Debug\net8.0-windows\APP_InventariadoV2.genruntimeconfig.cache
 C:\Users\Usuario\source\repos\APP_InventariadoV2\APP_InventariadoV2\obj\Debug\net8.0-windows\ref\APP_InventariadoV2.dll
 C:\Users\Usuario\source\repos\APP_InventariadoV2\APP_InventariadoV2\obj\Debug\net8.0-windows\APP_InventariadoV2.FormGestiones.resources
+C:\Users\Usuario\source\repos\APP_InventariadoV2\APP_InventariadoV2\obj\Debug\net8.0-windows\APP_InventariadoV2.sourcelink.json
