@@ -13,7 +13,8 @@ namespace APP_InventariadoV2
 {
     public partial class FormGestiones : Form
     {
-        SqlConnection conn = new SqlConnection("server=DESKTOP-DENLCDT; database=BaseProductos; integrated security=true");
+        private readonly string connectionString = "server=DESKTOP-DENLCDT; database=BaseProductos; integrated security=true";
+
         public FormGestiones()
         {
             InitializeComponent();
@@ -52,47 +53,56 @@ namespace APP_InventariadoV2
 
         private void Create()
         {
-            try
+            if (ValidateFields()) // Verificar que los campos estén correctos
             {
-                using (conn)
+                try
                 {
-                    conn.Open();
-                    string query = "INSERT INTO Productos (Id_Producto, Nombre, Descripcion, Categoria, Precio, Stock, Proveedor, Fecha_Ingreso, Fecha_Ultima_Actualizacion) " +
-                                   "VALUES (@Id_Producto, @Nombre, @Descripcion, @Categoria, @Precio, @Stock, @Proveedor, @Fecha_Ingreso, @Fecha_Ultima_Actualizacion)";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("ID_Producto", textBoxID.Text);
-                    cmd.Parameters.AddWithValue("@Nombre", textBoxName.Text);
-                    cmd.Parameters.AddWithValue("@Descripcion", textBoxDescrip.Text);
-                    cmd.Parameters.AddWithValue("@Categoria", textBoxCategori.Text);
-                    cmd.Parameters.AddWithValue("@Precio", decimal.Parse(textBoxPrice.Text)); // Asegúrate de que el precio sea un decimal
-                    cmd.Parameters.AddWithValue("@Stock", int.Parse(textBoxStock.Text)); // Asegúrate de que el stock sea un entero
-                    cmd.Parameters.AddWithValue("@Proveedor", textBoxProveedor.Text);
-                    cmd.Parameters.AddWithValue("@Fecha_Ingreso", DateTime.Parse(textBoxIngreso.Text));
-                    cmd.Parameters.AddWithValue("@Fecha_Ultima_Actualizacion", DateTime.Parse(textBoxActu.Text));
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Producto agregado con éxito");
-                    RefreshDataGridView(); // Método para refrescar el DataGridView
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+                        string query = "INSERT INTO Productos (Id_Producto, Nombre, Descripcion, Categoria, Precio, Stock, Proveedor, Fecha_Ingreso, Fecha_Ultima_Actualizacion) " +
+                                       "VALUES (@Id_Producto, @Nombre, @Descripcion, @Categoria, @Precio, @Stock, @Proveedor, @Fecha_Ingreso, @Fecha_Ultima_Actualizacion)";
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@Id_Producto", textBoxID.Text);
+                        cmd.Parameters.AddWithValue("@Nombre", textBoxName.Text);
+                        cmd.Parameters.AddWithValue("@Descripcion", textBoxDescrip.Text);
+                        cmd.Parameters.AddWithValue("@Categoria", textBoxCategori.Text);
+                        cmd.Parameters.AddWithValue("@Precio", decimal.Parse(textBoxPrice.Text));
+                        cmd.Parameters.AddWithValue("@Stock", int.Parse(textBoxStock.Text));
+                        cmd.Parameters.AddWithValue("@Proveedor", textBoxProveedor.Text);
+                        cmd.Parameters.AddWithValue("@Fecha_Ingreso", DateTime.Parse(textBoxIngreso.Text));
+                        cmd.Parameters.AddWithValue("@Fecha_Ultima_Actualizacion", DateTime.Parse(textBoxActu.Text));
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Producto agregado con éxito");
+                        RefreshDataGridView();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar el producto: " + ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al agregar el producto: " + ex.Message);
+                }
             }
         }
 
         private void Delete()
         {
+            if (string.IsNullOrWhiteSpace(textBoxID.Text))
+            {
+                MessageBox.Show("Por favor, ingrese el ID del producto para eliminar.");
+                return;
+            }
+
             try
             {
-                using (conn)
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
                     string query = "DELETE FROM Productos WHERE Id_Producto = @Id_Producto";
                     SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Id_Producto", int.Parse(textBoxID.Text)); // Asegúrate de que el ID sea un entero
+                    cmd.Parameters.AddWithValue("@Id_Producto", int.Parse(textBoxID.Text));
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Producto eliminado con éxito");
-                    RefreshDataGridView(); // Método para refrescar el DataGridView
+                    RefreshDataGridView();
                 }
             }
             catch (Exception ex)
@@ -101,34 +111,37 @@ namespace APP_InventariadoV2
             }
         }
 
-        private void Update() // Cambia Uptade a Update
+        private void Update()
         {
-            try
+            if (ValidateFields()) // Verificar que los campos estén correctos
             {
-                using (conn)
+                try
                 {
-                    conn.Open();
-                    string query = "UPDATE Productos SET Nombre = @Nombre, Descripcion = @Descripcion, Categoria = @Categoria, " +
-                                   "Precio = @Precio, Stock = @Stock, Proveedor = @Proveedor, Fecha_Ingreso = @Fecha_Ingreso, " +
-                                   "Fecha_Ultima_Actualizacion = @Fecha_Ultima_Actualizacion WHERE Id_Producto = @Id_Producto";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Id_Producto", int.Parse(textBoxID.Text)); // Asegúrate de que el ID sea un entero
-                    cmd.Parameters.AddWithValue("@Nombre", textBoxName.Text);
-                    cmd.Parameters.AddWithValue("@Descripcion", textBoxDescrip.Text);
-                    cmd.Parameters.AddWithValue("@Categoria", textBoxCategori.Text);
-                    cmd.Parameters.AddWithValue("@Precio", decimal.Parse(textBoxPrice.Text)); // Asegúrate de que el precio sea un decimal
-                    cmd.Parameters.AddWithValue("@Stock", int.Parse(textBoxStock.Text)); // Asegúrate de que el stock sea un entero
-                    cmd.Parameters.AddWithValue("@Proveedor", textBoxProveedor.Text);
-                    cmd.Parameters.AddWithValue("@Fecha_Ingreso", DateTime.Parse(textBoxIngreso.Text));
-                    cmd.Parameters.AddWithValue("@Fecha_Ultima_Actualizacion", DateTime.Parse(textBoxActu.Text));
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Producto actualizado con éxito");
-                    RefreshDataGridView(); // Método para refrescar el DataGridView
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+                        string query = "UPDATE Productos SET Nombre = @Nombre, Descripcion = @Descripcion, Categoria = @Categoria, " +
+                                       "Precio = @Precio, Stock = @Stock, Proveedor = @Proveedor, Fecha_Ingreso = @Fecha_Ingreso, " +
+                                       "Fecha_Ultima_Actualizacion = @Fecha_Ultima_Actualizacion WHERE Id_Producto = @Id_Producto";
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@Id_Producto", int.Parse(textBoxID.Text));
+                        cmd.Parameters.AddWithValue("@Nombre", textBoxName.Text);
+                        cmd.Parameters.AddWithValue("@Descripcion", textBoxDescrip.Text);
+                        cmd.Parameters.AddWithValue("@Categoria", textBoxCategori.Text);
+                        cmd.Parameters.AddWithValue("@Precio", decimal.Parse(textBoxPrice.Text));
+                        cmd.Parameters.AddWithValue("@Stock", int.Parse(textBoxStock.Text));
+                        cmd.Parameters.AddWithValue("@Proveedor", textBoxProveedor.Text);
+                        cmd.Parameters.AddWithValue("@Fecha_Ingreso", DateTime.Parse(textBoxIngreso.Text));
+                        cmd.Parameters.AddWithValue("@Fecha_Ultima_Actualizacion", DateTime.Parse(textBoxActu.Text));
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Producto actualizado con éxito");
+                        RefreshDataGridView();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al actualizar el producto: " + ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al actualizar el producto: " + ex.Message);
+                }
             }
         }
 
@@ -136,14 +149,14 @@ namespace APP_InventariadoV2
         {
             try
             {
-                using (conn)
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
                     string query = "SELECT * FROM Productos";
                     SqlDataAdapter da = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-                    dataGridViewG.DataSource = dt; // Asignamos el DataTable como fuente de datos
+                    dataGridViewG.DataSource = dt;
                 }
             }
             catch (Exception ex)
@@ -151,5 +164,20 @@ namespace APP_InventariadoV2
                 MessageBox.Show("Error al refrescar el DataGridView: " + ex.Message);
             }
         }
+
+        private bool ValidateFields()
+        {
+            if (string.IsNullOrWhiteSpace(textBoxID.Text) || string.IsNullOrWhiteSpace(textBoxName.Text) ||
+                string.IsNullOrWhiteSpace(textBoxDescrip.Text) || string.IsNullOrWhiteSpace(textBoxCategori.Text) ||
+                string.IsNullOrWhiteSpace(textBoxPrice.Text) || string.IsNullOrWhiteSpace(textBoxStock.Text) ||
+                string.IsNullOrWhiteSpace(textBoxProveedor.Text) || string.IsNullOrWhiteSpace(textBoxIngreso.Text) ||
+                string.IsNullOrWhiteSpace(textBoxActu.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return false;
+            }
+            return true;
+        }
     }
 }
+

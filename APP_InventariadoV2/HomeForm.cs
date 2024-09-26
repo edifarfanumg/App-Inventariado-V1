@@ -15,7 +15,7 @@ namespace APP_InventariadoV2
             if (formConsultas == null || formConsultas.IsDisposed)
             {
                 formConsultas = new FormConsultas();
-                formConsultas.FormClosed += (s, args) => this.Show(); // Volver a mostrar el HomeForm al cerrar
+                formConsultas.FormClosed += new FormClosedEventHandler(OnFormClosed);
             }
 
             this.Hide(); // Ocultar el HomeForm
@@ -27,11 +27,16 @@ namespace APP_InventariadoV2
             if (formGestiones == null || formGestiones.IsDisposed)
             {
                 formGestiones = new FormGestiones();
-                formGestiones.FormClosed += (s, args) => this.Show(); // Volver a mostrar el HomeForm al cerrar
+                formGestiones.FormClosed += new FormClosedEventHandler(OnFormClosed);
             }
 
             this.Hide(); // Ocultar el HomeForm
             formGestiones.Show();
+        }
+
+        private void OnFormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show(); // Mostrar el HomeForm cuando se cierra un formulario secundario
         }
     }
 }

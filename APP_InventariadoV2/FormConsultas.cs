@@ -14,7 +14,7 @@ namespace APP_InventariadoV2
 {
     public partial class FormConsultas : Form
     {
-        SqlConnection conn = new SqlConnection("server=DESKTOP-DENLCDT; database=BaseProductos; integrated security=true");
+        private readonly string connectionString = "server=DESKTOP-DENLCDT; database=BaseProductos; integrated security=true";
 
         public FormConsultas()
         {
@@ -28,7 +28,7 @@ namespace APP_InventariadoV2
 
         private void RegreCons_Click(object sender, EventArgs e)
         {
-            this.Hide();  // Solo ocultamos el formulario actual
+            this.Hide();  // Ocultamos el formulario actual
             HomeForm homeForm = (HomeForm)Application.OpenForms["HomeForm"]; // Buscamos la instancia abierta de HomeForm
 
             if (homeForm != null)
@@ -44,17 +44,27 @@ namespace APP_InventariadoV2
 
         private void CargarData()
         {
-            try
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                SqlDataAdapter da = new SqlDataAdapter("select * from Productos", conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                this.dataGridView1.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar los datos: " + ex.Message);
-            }
+                try
+                {
+                    conn.Open(); // Abrir conexión
+                    string query = "SELECT * FROM Productos";
+                    SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt); // Llenar el DataTable
+                    this.dataGridView1.DataSource = dt; // Asignar el DataTable al DataGridView
+                }
+                catch (SqlException sqlEx)
+                {
+                    MessageBox.Show("Error al cargar los datos desde la base de datos: " + sqlEx.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error inesperado: " + ex.Message);
+                }
+            } // La conexión se cierra automáticamente cuando se sale del bloque using
         }
     }
 }
+

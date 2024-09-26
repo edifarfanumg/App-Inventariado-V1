@@ -3,11 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\Usuario\\source\\repos\\APP_InventariadoV2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5865347C-2FB6-4037-ADFE-9E82D9943A96}|APP_InventariadoV2\\APP_InventariadoV2.csproj|C:\\Users\\Usuario\\source\\repos\\APP_InventariadoV2\\app_inventariadov2\\formgestiones.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5865347C-2FB6-4037-ADFE-9E82D9943A96}|APP_InventariadoV2\\APP_InventariadoV2.csproj|solutionrelative:app_inventariadov2\\formgestiones.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5865347C-2FB6-4037-ADFE-9E82D9943A96}|APP_InventariadoV2\\APP_InventariadoV2.csproj|c:\\users\\usuario\\source\\repos\\app_inventariadov2\\app_inventariadov2\\formgestiones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5865347C-2FB6-4037-ADFE-9E82D9943A96}|APP_InventariadoV2\\APP_InventariadoV2.csproj|C:\\Users\\Usuario\\source\\repos\\APP_InventariadoV2\\app_inventariadov2\\formgestiones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5865347C-2FB6-4037-ADFE-9E82D9943A96}|APP_InventariadoV2\\APP_InventariadoV2.csproj|solutionrelative:app_inventariadov2\\formgestiones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -17,6 +13,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{5865347C-2FB6-4037-ADFE-9E82D9943A96}|APP_InventariadoV2\\APP_InventariadoV2.csproj|C:\\Users\\Usuario\\source\\repos\\APP_InventariadoV2\\app_inventariadov2\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5865347C-2FB6-4037-ADFE-9E82D9943A96}|APP_InventariadoV2\\APP_InventariadoV2.csproj|solutionrelative:app_inventariadov2\\homeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5865347C-2FB6-4037-ADFE-9E82D9943A96}|APP_InventariadoV2\\APP_InventariadoV2.csproj|c:\\users\\usuario\\source\\repos\\app_inventariadov2\\app_inventariadov2\\formgestiones.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5865347C-2FB6-4037-ADFE-9E82D9943A96}|APP_InventariadoV2\\APP_InventariadoV2.csproj|solutionrelative:app_inventariadov2\\formgestiones.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,56 +26,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "FormGestiones.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\APP_InventariadoV2\\APP_InventariadoV2\\FormGestiones.Designer.cs",
               "RelativeDocumentMoniker": "APP_InventariadoV2\\FormGestiones.Designer.cs",
               "ToolTip": "C:\\Users\\Usuario\\source\\repos\\APP_InventariadoV2\\APP_InventariadoV2\\FormGestiones.Designer.cs",
               "RelativeToolTip": "APP_InventariadoV2\\FormGestiones.Designer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAuAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE8BAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T04:24:56.768Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "FormGestiones.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\APP_InventariadoV2\\APP_InventariadoV2\\FormGestiones.cs",
               "RelativeDocumentMoniker": "APP_InventariadoV2\\FormGestiones.cs",
               "ToolTip": "C:\\Users\\Usuario\\source\\repos\\APP_InventariadoV2\\APP_InventariadoV2\\FormGestiones.cs",
               "RelativeToolTip": "APP_InventariadoV2\\FormGestiones.cs",
-              "ViewState": "AQIAAHQAAAAAAAAAAAAAwIEAAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAJoAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T03:55:02.384Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "FormConsultas.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\APP_InventariadoV2\\APP_InventariadoV2\\FormConsultas.cs",
               "RelativeDocumentMoniker": "APP_InventariadoV2\\FormConsultas.cs",
               "ToolTip": "C:\\Users\\Usuario\\source\\repos\\APP_InventariadoV2\\APP_InventariadoV2\\FormConsultas.cs",
               "RelativeToolTip": "APP_InventariadoV2\\FormConsultas.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAdAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T03:54:55.417Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "HomeForm.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\source\\repos\\APP_InventariadoV2\\APP_InventariadoV2\\HomeForm.cs",
               "RelativeDocumentMoniker": "APP_InventariadoV2\\HomeForm.cs",
               "ToolTip": "C:\\Users\\Usuario\\source\\repos\\APP_InventariadoV2\\APP_InventariadoV2\\HomeForm.cs",
               "RelativeToolTip": "APP_InventariadoV2\\HomeForm.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAowAkAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T03:54:31.059Z",
               "EditorCaption": ""
